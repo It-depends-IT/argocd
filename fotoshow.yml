@@ -8,7 +8,7 @@ spec:
     namespace: env-group1-test
   project: default
   source:
-    path: deployment/overlays/test
+    path: overlays/test
     repoURL: git@github.com:It-depends-IT/deployment.git
     targetRevision: main
   syncPolicy:
