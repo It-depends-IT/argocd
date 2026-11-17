@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: simple-slideshow-test
+  name: nurse-training-app
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -15,4 +15,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
----
