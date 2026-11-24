@@ -1,0 +1,62 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: nurse-training-app
+  namespace: argocd
+spec:
+  commonUpdateSettings:
+    pullSecret: pullsecret:argocd/ghcr-pull-secret
+  writeBackConfig:
+    method: git
+    gitConfig:
+      branch: main
+      writeBackTarget: kustomization
+  applicationRefs:
+    - namePattern: env-test
+      commonUpdateSettings:
+        updateStrategy: digest
+      images:
+        - alias: auth
+          imageName: ghcr.io/it-depends-it/nurse-training-app-auth:develop
+        - alias: cms
+          imageName: ghcr.io/it-depends-it/nurse-training-app-cms:develop
+        - alias: courses
+          imageName: ghcr.io/it-depends-it/nurse-training-app-courses:develop
+        - alias: db-manager
+          imageName: ghcr.io/it-depends-it/nurse-training-app-db-manager:develop
+          commonUpdateSettings:
+            forceUpdate: true
+        - alias: docs
+          imageName: ghcr.io/it-depends-it/nurse-training-app-docs:develop
+    - namePattern: env-staging
+      commonUpdateSettings:
+        updateStrategy: digest
+      images:
+        - alias: auth
+          imageName: ghcr.io/it-depends-it/nurse-training-app-auth:pre-release
+        - alias: cms
+          imageName: ghcr.io/it-depends-it/nurse-training-app-cms:pre-release
+        - alias: courses
+          imageName: ghcr.io/it-depends-it/nurse-training-app-courses:pre-release
+        - alias: db-manager
+          imageName: ghcr.io/it-depends-it/nurse-training-app-db-manager:pre-release
+          commonUpdateSettings:
+            forceUpdate: true
+        - alias: docs
+          imageName: ghcr.io/it-depends-it/nurse-training-app-docs:pre-release
+    - namePattern: env-prod
+      commonUpdateSettings:
+        updateStrategy: digest
+      images:
+        - alias: auth
+          imageName: ghcr.io/it-depends-it/nurse-training-app-auth:latest
+        - alias: cms
+          imageName: ghcr.io/it-depends-it/nurse-training-app-cms:latest
+        - alias: courses
+          imageName: ghcr.io/it-depends-it/nurse-training-app-courses:latest
+        - alias: db-manager
+          imageName: ghcr.io/it-depends-it/nurse-training-app-db-manager:latest
+          commonUpdateSettings:
+            forceUpdate: true
+        - alias: docs
+          imageName: ghcr.io/it-depends-it/nurse-training-app-docs:latest
