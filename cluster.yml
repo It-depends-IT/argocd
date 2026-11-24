@@ -56,6 +56,14 @@ spec:
     targetRevision: 0.46.0
     helm:
       valuesObject:
+        config:
+          oidc:
+            secret:
+              create: false
+            externalSecret:
+              enabled: true
+              name: headlamp-oidc
+              hasScopes: true
         ingress:
           enabled: true
           ingressClassName: traefik
