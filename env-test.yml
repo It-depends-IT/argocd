@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: env-test
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: env-test
+  project: default
+  source:
+    path: overlays/test
+    repoURL: git@github.com:It-depends-IT/deployment.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true

@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nurse-training-app
+  name: env-prod
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: env-group1-test
+    namespace: env-prod
   project: default
   source:
-    path: overlays/k3s
+    path: overlays/prod
     repoURL: git@github.com:It-depends-IT/deployment.git
     targetRevision: main
   syncPolicy:
@@ -16,4 +16,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - ServerSideApply=true 
+      - ServerSideApply=true
