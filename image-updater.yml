@@ -28,6 +28,8 @@ spec:
             forceUpdate: true
         - alias: docs
           imageName: ghcr.io/it-depends-it/nurse-training-app-docs:develop
+        - alias: queue-worker
+          imageName: ghcr.io/it-depends-it/nurse-training-app-queue-worker:develop
         - alias: frontend
           imageName: ghcr.io/it-depends-it/frontend-web:pre-release
     - namePattern: env-staging
@@ -46,6 +48,8 @@ spec:
             forceUpdate: true
         - alias: docs
           imageName: ghcr.io/it-depends-it/nurse-training-app-docs:pre-release
+        - alias: queue-worker
+          imageName: ghcr.io/it-depends-it/nurse-training-app-queue-worker:pre-release
         - alias: frontend
           imageName: ghcr.io/it-depends-it/frontend-web:pre-release
     - namePattern: env-prod
@@ -64,5 +68,7 @@ spec:
             forceUpdate: true
         - alias: docs
           imageName: ghcr.io/it-depends-it/nurse-training-app-docs:latest
+        - alias: queue-worker
+          imageName: ghcr.io/it-depends-it/nurse-training-app-queue-worker:latest
         - alias: frontend
           imageName: ghcr.io/it-depends-it/frontend-web:latest
