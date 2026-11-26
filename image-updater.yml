@@ -28,6 +28,8 @@ spec:
             forceUpdate: true
         - alias: docs
           imageName: ghcr.io/it-depends-it/nurse-training-app-docs:develop
+        - alias: frontend
+          imageName: ghcr.io/it-depends-it/frontend-web:latest
     - namePattern: env-staging
       commonUpdateSettings:
         updateStrategy: digest
@@ -44,6 +46,8 @@ spec:
             forceUpdate: true
         - alias: docs
           imageName: ghcr.io/it-depends-it/nurse-training-app-docs:pre-release
+        - alias: frontend
+          imageName: ghcr.io/it-depends-it/frontend-web:latest
     - namePattern: env-prod
       commonUpdateSettings:
         updateStrategy: digest
@@ -60,3 +64,5 @@ spec:
             forceUpdate: true
         - alias: docs
           imageName: ghcr.io/it-depends-it/nurse-training-app-docs:latest
+        - alias: frontend
+          imageName: ghcr.io/it-depends-it/frontend-web:latest
